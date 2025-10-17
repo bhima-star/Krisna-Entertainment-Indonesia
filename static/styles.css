@@ -1,0 +1,133 @@
+/* Umum */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Header */
+header {
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  gap: 10px;
+}
+
+.logo img {
+  height: 45px;
+  border-radius: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-weight: 600;
+}
+
+nav a:hover,
+nav a.active {
+  color: #00bfff;
+}
+
+.cta {
+  background: #00bfff;
+  color: #000;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cta:hover {
+  background: #009edb;
+}
+
+/* Section utama */
+main {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* LOGO BESAR (HOME/HERO SECTION) */
+.hero .logo-big {
+  max-width: 350px;
+  height: auto;
+  display: block;
+  margin: 40px auto;
+}
+
+/* ------------------------------------- */
+
+/* FORM PEMESANAN */
+.booking-form {
+  max-width: 700px;
+  margin: 30px auto;
+  background: #111;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  background: #222;
+  color: #fff;
+}
+
+.booking-form input::placeholder,
+.booking-form textarea::placeholder {
+  color: #aaa;
+}
+
+.booking-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.booking-form button {
+  background: #00bfff;
+  color: #000;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.booking-form button:hover {
+  background: #009edb;
+  transform: scale(1.03);
+}
+
+/* Footer */
+.footer {
+  background: #000;
+  color: #888;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  border-top: 1px solid #222;
+}

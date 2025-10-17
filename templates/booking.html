@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Krisna Entertainment Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+        }
+
+        header {
+            background-color: #0d0d0d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            border-bottom: 2px solid #00bfff;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 20px;
+            color: #00bfff;
+        }
+
+        .logo img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+
+        nav a {
+            color: #ccc;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #00bfff;
+        }
+
+        .cta {
+            background-color: #00bfff;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta:hover {
+            background-color: #008fcc;
+            transform: scale(1.05);
+        }
+
+        /* Container utama */
+        .booking-container {
+            max-width: 800px;
+            margin: 60px auto;
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.3);
+            border: 1px solid rgba(0, 191, 255, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #00bfff;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+
+        /* Pesan sukses */
+        .flash-message {
+            background-color: #00bfff;
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(0,191,255,0.4);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ddd;
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background-color: #121212;
+            border: 1px solid #00bfff;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+            border-color: #33ccff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 191, 255, 0.6);
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(90deg, #00bfff, #0077ff);
+            color: #fff;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #33ccff, #0088ff);
+            box-shadow: 0 0 15px rgba(0, 191, 255, 0.6);
+        }
+
+        footer {
+            background-color: #0d0d0d;
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid #00bfff;
+            color: #aaa;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer span {
+            color: #00bfff;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo Krisna">
+        Krisna Entertainment
+    </div>
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('layanan') }}">Layanan</a>
+        <a href="{{ url_for('galeri') }}">Galeri</a>
+        <a href="{{ url_for('booking') }}" class="active">Booking</a>
+        <a href="{{ url_for('kontak') }}">Kontak</a>
+    </nav>
+    <a href="{{ url_for('booking') }}" class="cta">BOOKING SEKARANG</a>
+</header>
+
+<main class="booking-container">
+    <h2>Form Pemesanan Acara</h2>
+
+    <!-- Menampilkan pesan sukses/error dari Flask -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('booking') }}">
+        <label for="nama">Nama Lengkap</label>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap anda" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Masukkan email aktif" required>
+
+        <label for="telepon">Nomor Telepon</label>
+        <input type="text" id="telepon" name="telepon" placeholder="Masukkan nomor telepon anda" required>
+
+        <label for="layanan">Pilih Layanan</label>
+        <select id="layanan" name="layanan" required>
+            <option value="">-- Pilih Layanan --</option>
+            <option value="Wedding Organizer">Wedding Organizer</option>
+            <option value="Sewa Sound System">Sewa Sound System</option>
+            <option value="Live Band & MC">Live Band & MC</option>
+            <option value="Paket Lengkap">Paket Lengkap</option>
+        </select>
+
+        <label for="tanggal">Tanggal Acara</label>
+        <input type="date" id="tanggal" name="tanggal" required>
+
+        <label for="pesan">Catatan Tambahan</label>
+        <textarea id="pesan" name="pesan" rows="4" placeholder="Tuliskan catatan tambahan..."></textarea>
+
+        <button type="submit">Kirim Pemesanan</button>
+    </form>
+</main>
+
+<footer>
+    <p>© 2025 <span>Krisna Entertainment Indonesia</span>. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

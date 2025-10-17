@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Krisna Entertainment Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
+        Krisna Entertainment
+    </div>
+    <nav>
+        <a href="{{ url_for('index') }}" class="active">Home</a>
+        <a href="{{ url_for('layanan') }}">Layanan</a>
+        <a href="{{ url_for('galeri') }}">Galeri</a>
+        <a href="{{ url_for('kontak') }}">Kontak</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero section">
+        
+        <img 
+            src="{{ url_for('static', filename='images/logo.jpg') }}" 
+            alt="Krisna Entertainment Logo Besar" 
+            class="logo-big"
+        >
+        
+        <h1>Media Informasi, Promosi, dan Pemesanan Jasa Hiburan</h1>
+        <p style="color: #aaa; max-width: 600px; margin: 0 auto 30px;">
+            Kami menghadirkan hiburan berkualitas untuk pernikahan, konser, acara perusahaan, dan berbagai event lainnya.
+        </p>
+        
+        <a href="{{ url_for('booking') }}" class="cta" style="font-size: 1.1rem; padding: 15px 30px;">
+            MULAI BOOKING SEKARANG
+        </a>
+    </section>
+
+    <section class="services-highlight section" style="margin-top: 50px;">
+        <h2>Layanan Kami</h2>
+        
+        <div class="layanan-container" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px;">
+            
+            {% if layanan %}
+                {% for l in layanan %}
+                    <div class="service-card" style="width: 250px; background: #111; padding: 20px; border-radius: 10px; text-align: left; border: 1px solid #333;">
+                        <h3 style="color: #00bfff; margin-top: 0;">{{ l[1] }}</h3>
+                        <p style="color: #ccc; font-size: 0.9rem;">
+                            Menyediakan berbagai paket {{ l[1] }} dengan kualitas terbaik dan harga yang kompetitif.
+                        </p>
+                        <a href="{{ url_for('layanan') }}" style="color: #fff; text-decoration: none; font-weight: 600;">Lihat Detail →</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p style="color: #aaa;">Tidak ada data layanan untuk ditampilkan.</p>
+            {% endif %}
+            
+        </div>
+        
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p>WA: 087723482804 | Email: KrisnaEntertainment2025@gmail.com</p>
+    <p>Alamat Kantor: Ruko Crystals, Summarecon Kota Bekasi</p>
+    <p>&copy; 2025 Krisna Entertainment Indonesia</p>
+</footer>
+
+</body>
+</html>

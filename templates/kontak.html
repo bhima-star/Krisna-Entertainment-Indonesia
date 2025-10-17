@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontak Kami - Krisna Entertainment Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    
+    <style>
+        .flash-message {
+            max-width: 600px; 
+            margin: 20px auto; 
+            padding: 10px; 
+            border-radius: 5px; 
+            font-weight: 600;
+            text-align: center;
+        }
+        .flash-success {
+            background: #3c763d; /* Hijau */
+            color: #dff0d8;
+        }
+        .flash-error {
+            background: #a94442; /* Merah */
+            color: #f2dede;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" />
+            Krisna Entertainment
+        </div>
+
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('layanan') }}">Layanan</a>
+            <a href="{{ url_for('galeri') }}">Gallery</a>
+            <a href="{{ url_for('kontak') }}" class="active">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <h1>Hubungi Kami</h1>
+            <p style="max-width: 600px; margin: 10px auto 30px; color: #aaa;">
+                Silakan hubungi kami melalui formulir di bawah ini atau gunakan informasi kontak yang tersedia.
+            </p>
+
+            <div style="margin-bottom: 40px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <div style="background: #111; padding: 20px; border-radius: 10px; text-align: left;">
+                    <h3 style="color: #00bfff;">Detail Kontak</h3>
+                    <p><strong>WhatsApp:</strong> 087723482804 (lifza)</p>
+                    <p><strong>Email:</strong> KrisnaEntertainment2025@gmail.com</p>
+                    <p><strong>Alamat Kantor:</strong> Ruko Crystals, Summarecon Kota Bekasi</p>
+                </div>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <h2>Kirimkan Pesan Anda</h2>
+            
+            <form action="{{ url_for('kontak') }}" method="POST" class="booking-form">
+                <input type="text" name="nama" placeholder="Nama Lengkap" required />
+                <input type="email" name="email" placeholder="Alamat Email" required />
+                <input type="tel" name="telepon" placeholder="Nomor Telepon (Opsional)" />
+                <textarea name="pesan" placeholder="Pesan atau Pertanyaan Anda" required></textarea>
+                <button type="submit">Kirim Pesan</button>
+            </form>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>WA: 087723482804 (Lifza) | Email: KrisnaEntertainment2025@gmail.com</p>
+        <p>Alamat Kantor: Ruko Crystals, Summarecon Kota Bekasi</p>
+        <p>&copy; 2025 Krisna Entertainment Indonesia</p>
+    </footer>
+</body>
+</html>

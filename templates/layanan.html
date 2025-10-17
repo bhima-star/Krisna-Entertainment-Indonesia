@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan - Krisna Entertainment Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #0b0c10;
+            color: hsl(0, 0%, 100%);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: #0b0c10;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            flex-wrap: wrap;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        header .logo img {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #00BFFF;
+        }
+
+        .cta {
+            background-color: #00BFFF;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .cta:hover {
+            background-color: #0099CC;
+        }
+
+        /* ===== SECTION ===== */
+        main {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        main h2 {
+            color: #00BFFF;
+            font-weight: 800;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        main p {
+            color: #ccc;
+            margin-bottom: 50px;
+        }
+
+        /* ===== CARD LAYANAN ===== */
+        .layanan-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .layanan-card {
+            background-color: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 14px;
+            padding: 30px 20px;
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .layanan-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgb(0, 191, 255);
+        }
+
+        .layanan-card h4 {
+            color: #00BFFF;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .layanan-card p {
+            color: #bbb;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #0099CC;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo KEII">
+            Krisna Entertainment
+        </div>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('layanan') }}" class="active">Layanan</a>
+            <a href="{{ url_for('galeri') }}">Galeri</a>
+            <a href="{{ url_for('booking') }}">Booking</a>
+            <a href="{{ url_for('kontak') }}">Kontak</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Layanan Kami</h2>
+        <p>Kami menyediakan layanan profesional untuk membuat acara Anda berjalan sempurna dan berkesan.</p>
+
+        <div class="layanan-container">
+            <div class="layanan-card">
+                <h4>🎵 Live Band Performance</h4>
+                <p>Penampilan band profesional dengan pilihan genre sesuai acara Anda — dari pop hingga dangdut modern.</p>
+            </div>
+            <div class="layanan-card">
+                <h4>🔊 Sound & Lighting Setup</h4>
+                <p>Pencahayaan dan tata suara profesional untuk menciptakan suasana acara yang megah dan berkelas.</p>
+            </div>
+            <div class="layanan-card">
+                <h4>💍 Wedding & Event Organizer</h4>
+                <p>Layanan perencanaan acara dan pernikahan secara menyeluruh, dengan konsep elegan dan profesional.</p>
+            </div>
+    </main>
+
+    <footer>
+        © 2025 Krisna Entertainment Indonesia. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
